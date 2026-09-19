@@ -1,0 +1,241 @@
+/* public/css/app.css - Complete preserved styling for Rosie AI Chat */
+
+/* Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;1,600&display=swap');
+
+:root {
+  --rosie-primary: #DF4D76;
+  --rosie-primary-dark: #C73359;
+  --rosie-deep: #8b204f;
+  --rosie-bg: #FFF3F6;
+  --rosie-bg-alt: #FDF2F4;
+  --rosie-bubble-user: #ffe4ec;
+  --rosie-bubble-bot: #ffffff;
+  --rosie-text: #2e1822;
+  --rosie-accent: #f472b6;
+}
+
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+*::-webkit-scrollbar {
+  display: none;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #1c1917;
+  color: #1e293b;
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-x: hidden;
+  user-select: none;
+}
+
+/* Device Shell for Browser & Responsive Container for Mobile */
+#app-viewport {
+  width: 100%;
+  max-width: 430px;
+  height: 100vh;
+  height: 100dvh;
+  position: relative;
+  background: var(--rosie-bg);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.55);
+}
+
+@media (min-width: 640px) {
+  #app-viewport {
+    height: 900px;
+    max-height: 94vh;
+    border-radius: 46px;
+    border: 8px solid #292524;
+    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.65), 0 0 0 1px rgba(255, 255, 255, 0.1);
+  }
+}
+
+/* Screen transition manager */
+.app-screen {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(0.98);
+  transition: opacity 0.28s ease, transform 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow-y: auto;
+  overflow-x: hidden;
+  z-index: 10;
+}
+
+.app-screen.active {
+  opacity: 1;
+  pointer-events: auto;
+  transform: scale(1);
+  z-index: 20;
+}
+
+/* Background Wallpapers */
+.chat-wallpaper {
+  background-color: #fff4f7;
+  background-image: 
+    radial-gradient(circle at 10% 20%, rgba(255, 182, 193, 0.25) 0%, transparent 25%),
+    radial-gradient(circle at 90% 80%, rgba(243, 218, 255, 0.35) 0%, transparent 30%),
+    radial-gradient(circle at 50% 50%, rgba(255, 226, 236, 0.4) 0%, transparent 40%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cpath d='M32 18 C30 14, 24 14, 22 18 C20 14, 14 14, 12 18 C10 24, 22 32, 22 32 C22 32, 34 24, 32 18 Z' stroke='%23f9a8b8' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' opacity='0.35'/%3E%3Cpath d='M118 78 C116 75, 112 75, 110 78 C108 75, 104 75, 102 78 C100 83, 110 90, 110 90 C110 90, 120 83, 118 78 Z' stroke='%23f497aa' stroke-width='1.4' stroke-linecap='round' opacity='0.3'/%3E%3Cpath d='M140 24 C139 21, 136 21, 135 24 C134 21, 131 21, 130 24 C129 28, 135 33, 135 33 C135 33, 141 28, 140 24 Z' fill='%23fbcfe8' opacity='0.45'/%3E%3Cpath d='M40 110 C39 108, 36 108, 35 110 C34 108, 31 108, 30 110 C29 113, 35 117, 35 117 C35 117, 41 113, 40 110 Z' fill='%23fed7aa' opacity='0.45'/%3E%3Cpath d='M85 130 C84 128, 82 128, 81 130 C80 128, 78 128, 77 130 C76 133, 81 137, 81 137 C81 137, 86 133, 85 130 Z' stroke='%23f472b6' stroke-width='1.2' opacity='0.3'/%3E%3Cpath d='M75 35 Q76 40 81 41 Q76 42 75 47 Q74 42 69 41 Q74 40 75 35 Z' fill='%23fbcfe8' opacity='0.5'/%3E%3Cpath d='M138 135 Q139 138 142 139 Q139 140 138 143 Q137 140 134 139 Q137 138 138 135 Z' fill='%23ddd6fe' opacity='0.55'/%3E%3Cpath d='M20 75 Q21 78 24 79 Q21 80 20 83 Q19 80 16 79 Q19 78 20 75 Z' fill='%23fbcfe8' opacity='0.4'/%3E%3Ccircle cx='98' cy='22' r='2' fill='%23f472b6' opacity='0.35'/%3E%3Ccircle cx='18' cy='140' r='2' fill='%23f472b6' opacity='0.35'/%3E%3Ccircle cx='148' cy='85' r='1.5' fill='%23c084fc' opacity='0.4'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: auto, auto, auto, 140px 140px;
+  background-repeat: repeat;
+}
+
+.chat-bg-pattern {
+  background-color: #FDF2F4;
+  background-image: radial-gradient(#F9C3CF 0.75px, transparent 0.75px), 
+                    url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 38.5c-.8 0-1.5-.4-2-.9-3.2-3.3-7.5-6.8-10.3-10.2-2.5-3-3.7-6.1-3.7-9.4 0-5.5 4.3-9.5 9.7-9.5 3 0 5.8 1.4 7.6 3.8 1.8-2.4 4.6-3.8 7.6-3.8 5.4 0 9.7 4 9.7 9.5 0 3.3-1.2 6.4-3.7 9.4-2.8 3.4-7.1 6.9-10.3 10.2-.5.5-1.2.9-2 .9z' fill='%23F4B4C4' fill-opacity='0.16'/%3E%3C/svg%3E");
+  background-size: 30px 30px, 90px 90px;
+}
+
+.bg-heart-pattern {
+  background-color: #fff9fa;
+  background-image: 
+    radial-gradient(at 0% 0%, rgba(255, 226, 235, 0.8) 0px, transparent 50%),
+    radial-gradient(at 100% 0%, rgba(255, 238, 244, 0.9) 0px, transparent 40%),
+    radial-gradient(at 100% 100%, rgba(254, 215, 226, 0.7) 0px, transparent 55%),
+    radial-gradient(at 0% 100%, rgba(255, 240, 245, 0.9) 0px, transparent 50%),
+    url("data:image/svg+xml,%3Csvg width='70' height='70' viewBox='0 0 70 70' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M35 24.5c-2.4-4-7-6.5-11.8-4.5-4.8 2-6.5 7.6-4.5 12.4 2.8 6.5 16.3 18.6 16.3 18.6s13.5-12.1 16.3-18.6c2-4.8.3-10.4-4.5-12.4-4.8-2-9.4.5-11.8 4.5z' fill='%23f9a8bd' fill-opacity='0.16' fill-rule='evenodd'/%3E%3Ccircle cx='62' cy='15' r='1.5' fill='%23fcaec2' fill-opacity='0.25'/%3E%3Ccircle cx='10' cy='60' r='1' fill='%23fcaec2' fill-opacity='0.25'/%3E%3C/svg%3E");
+}
+
+/* Chat Bubbles */
+.bubble-user {
+  border-radius: 20px 20px 4px 20px;
+  box-shadow: 0 2px 8px -1px rgba(244, 114, 182, 0.2);
+  background-color: #ffe4ec;
+  color: #3d1a29;
+  border: 1px solid rgba(244, 114, 182, 0.3);
+  word-break: break-word;
+}
+
+.bubble-bot {
+  border-radius: 20px 20px 20px 4px;
+  box-shadow: 0 2px 8px -1px rgba(168, 85, 247, 0.12);
+  background-color: rgba(255, 255, 255, 0.96);
+  color: #2c1d2e;
+  border: 1px solid rgba(223, 77, 118, 0.15);
+  word-break: break-word;
+}
+
+/* Animations */
+@keyframes popIn {
+  0% { opacity: 0; transform: scale(0.9) translateY(8px); }
+  100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.message-pop {
+  animation: popIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes gentlePulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(238, 67, 114, 0.35), 0 0 35px rgba(255, 182, 193, 0.45);
+  }
+  50% {
+    box-shadow: 0 0 0 10px rgba(238, 67, 114, 0.05), 0 0 45px rgba(255, 182, 193, 0.75);
+  }
+}
+
+.pulse-glow-ring {
+  animation: gentlePulse 3.5s infinite ease-in-out;
+}
+
+@keyframes cuteWiggle {
+  0%, 100% { transform: rotate(0deg) scale(1); }
+  20% { transform: rotate(-6deg) scale(1.04); }
+  40% { transform: rotate(6deg) scale(1.04); }
+  60% { transform: rotate(-4deg) scale(1.02); }
+  80% { transform: rotate(4deg) scale(1.02); }
+}
+
+.animate-avatar-wiggle {
+  animation: cuteWiggle 0.6s ease-in-out both;
+}
+
+@keyframes subtlePulse {
+  0%, 100% { transform: scale(1); box-shadow: 0 10px 25px -4px rgba(223, 77, 118, 0.4); }
+  50% { transform: scale(1.015); box-shadow: 0 14px 32px -2px rgba(223, 77, 118, 0.55); }
+}
+
+.cta-pulse {
+  animation: subtlePulse 3s infinite ease-in-out;
+}
+
+/* Typing Indicator Bouncing Dots */
+.typing-dot {
+  width: 6px;
+  height: 6px;
+  background-color: #ec4899;
+  border-radius: 50%;
+  display: inline-block;
+  animation: typingBounce 1.4s infinite ease-in-out both;
+}
+
+.typing-dot:nth-child(1) { animation-delay: -0.32s; }
+.typing-dot:nth-child(2) { animation-delay: -0.16s; }
+
+@keyframes typingBounce {
+  0%, 80%, 100% { transform: scale(0.6); opacity: 0.4; }
+  40% { transform: scale(1.15); opacity: 1; }
+}
+
+/* Voice Call Wave Animation */
+.sound-wave-bar {
+  width: 4px;
+  background: linear-gradient(to top, #DF4D76, #f472b6);
+  border-radius: 4px;
+  animation: soundWave 1.2s infinite ease-in-out alternate;
+}
+
+@keyframes soundWave {
+  0% { height: 10px; }
+  100% { height: 42px; }
+}
+
+/* Glass Pill and UI details */
+.glass-pill {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.shadow-card-active {
+  box-shadow: 0 10px 28px -4px rgba(223, 77, 118, 0.28), 0 6px 12px -3px rgba(223, 77, 118, 0.15);
+}
+
+/* Lightbox Modal */
+#photo-lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.9);
+  z-index: 999;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+#photo-lightbox.active {
+  display: flex;
+}

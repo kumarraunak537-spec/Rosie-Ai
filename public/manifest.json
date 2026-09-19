@@ -1,0 +1,24 @@
+{
+  "name": "Rosie AI Chat",
+  "short_name": "Rosie",
+  "description": "Your warm, empathetic AI companion",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#FFF3F6",
+  "theme_color": "#DF4D76",
+  "icons": [
+    {
+      "src": "/assets/avatar_profile.jpg",
+      "sizes": "192x192",
+      "type": "image/jpeg",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/assets/avatar_profile.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg",
+      "purpose": "any maskable"
+    }
+  ]
+}

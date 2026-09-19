@@ -1,0 +1,33 @@
+{
+  "name": "rosie-ai-chat-app",
+  "version": "1.0.0",
+  "description": "Rosie AI Chat - An emotionally intelligent AI companion mobile application",
+  "main": "server/index.js",
+  "scripts": {
+    "start": "node server/index.js",
+    "dev": "node --watch server/index.js",
+    "test": "node test/api-test.js"
+  },
+  "keywords": [
+    "ai",
+    "companion",
+    "rosie",
+    "chat",
+    "android",
+    "pwa",
+    "capacitor"
+  ],
+  "author": "Rosie AI Team",
+  "license": "ISC",
+  "dependencies": {
+    "@google/generative-ai": "^0.21.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "puppeteer": "^25.11.0"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "^6.2.0",
+    "@capacitor/core": "^6.2.0"
+  }
+}

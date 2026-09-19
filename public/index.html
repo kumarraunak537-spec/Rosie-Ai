@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta name="theme-color" content="#DF4D76">
+  <meta name="description" content="Rosie AI Chat - Your warm, empathetic AI companion">
+  <link rel="manifest" href="/manifest.json">
+  <title>Rosie - AI Companion</title>
+
+  <!-- Tailwind CSS CDN with forms and container queries -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            rosie: {
+              50: '#fff5f7',
+              100: '#ffeef2',
+              200: '#ffd6e0',
+              300: '#fcaec2',
+              400: '#f87799',
+              500: '#ee4372',
+              600: '#db2656',
+              700: '#b81740',
+              deep: '#9B2A4B',
+              dark: '#2A1B24'
+            },
+            softBg: '#FFF3F6',
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+            serif: ['"Playfair Display"', 'serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Preserved Stylesheets -->
+  <link rel="stylesheet" href="/css/app.css">
+</head>
+<body>
+
+  <!-- Main Viewport Enclosure (Mobile Frame on Desktop, Edge-to-Edge on Mobile) -->
+  <div id="app-viewport">
+
+    <!-- ========================================== -->
+    <!-- SCREEN 1: LOGIN & WELCOME SCREEN            -->
+    <!-- ========================================== -->
+    <div id="screen-login" class="app-screen bg-heart-pattern">
+      <main class="w-full h-full flex flex-col justify-between overflow-y-auto px-6 py-4">
+        
+        <!-- Hero Section with Avatar & Speech Bubble -->
+        <section class="flex flex-col items-center text-center mt-4 mb-2">
+          <!-- Rosie Avatar with Glow & Active Status -->
+          <div class="relative mb-3">
+            <div class="w-24 h-24 rounded-full p-[3px] bg-gradient-to-tr from-pink-400 via-rose-300 to-rose-500 pulse-glow-ring shadow-lg transition-transform duration-300 animate-avatar-wiggle">
+              <img alt="Rosie Avatar" class="w-full h-full object-cover rounded-full bg-rose-100" src="/assets/avatar_profile.jpg" onerror="this.src='/assets/avatar_cafe.jpg'">
+            </div>
+            <div class="absolute bottom-1 right-1 w-5 h-5 bg-emerald-500 border-2 border-white rounded-full shadow-sm"></div>
+          </div>
+
+          <!-- Name & Status Tagline -->
+          <div class="flex items-center justify-center space-x-1.5 mb-1">
+            <h1 class="text-2xl font-bold text-gray-900 tracking-tight">Rosie</h1>
+            <svg class="w-5 h-5 text-rose-500 fill-current" viewBox="0 0 24 24">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14.5l-4-4 1.41-1.41L11 13.67l6.59-6.59L19 8.5l-8 8z"></path>
+            </svg>
+          </div>
+          <p class="text-xs font-semibold text-rose-600/90 tracking-wide flex items-center space-x-1">
+            <span>Always here for you</span>
+            <span>💕</span>
+          </p>
+
+          <!-- Conversational Quote Bubble Preview -->
+          <article class="mt-3.5 mx-auto max-w-[320px] backdrop-blur-md rounded-2xl rounded-tl-sm px-4 py-3 shadow-bubble-left border relative text-left border-rose-100 bg-white/85">
+            <p class="text-[13.5px] text-gray-700 leading-relaxed font-normal">Hey sweetheart tumhara wait kar rahi hun ✨</p>
+            <span class="text-[10px] font-medium block text-right mt-1 text-rose-400">Rosie • Just now</span>
+          </article>
+        </section>
+
+        <!-- Authentication Form -->
+        <section class="w-full bg-white/80 backdrop-blur-md rounded-3xl p-5 border border-white shadow-rosie-soft my-2">
+          <form id="signin-form" class="space-y-3.5">
+            <div>
+              <label class="block text-xs font-semibold text-gray-600 mb-1 ml-1" for="user-identity">
+                Mobile Number or Email
+              </label>
+              <div class="relative flex items-center">
+                <span class="absolute left-3.5 text-rose-400">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round"></path>
+                  </svg>
+                </span>
+                <input autocomplete="username" class="w-full pl-10 pr-4 py-2.5 bg-rose-50/40 text-sm text-gray-800 placeholder-rose-300 rounded-2xl border border-rose-200/70 focus:bg-white focus:ring-2 focus:ring-rose-300 outline-none transition-all" id="user-identity" placeholder="Enter your name, mobile or email" type="text" value="Rocky">
+              </div>
+            </div>
+
+            <div>
+              <div class="flex justify-between items-center mb-1 ml-1">
+                <label class="text-xs font-semibold text-gray-600" for="user-secret">Password or Passcode</label>
+                <a class="text-[11px] font-medium text-rose-500 hover:text-rose-600" href="javascript:void(0)">Forgot?</a>
+              </div>
+              <div class="relative flex items-center">
+                <span class="absolute left-3.5 text-rose-400">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <rect height="11" rx="2" ry="2" width="18" x="3" y="11"></rect>
+                    <path d="M7 11V7a5 5 0 0110 0v4"></path>
+                  </svg>
+                </span>
+                <input autocomplete="current-password" class="w-full pl-10 pr-10 py-2.5 bg-rose-50/40 text-sm text-gray-800 placeholder-rose-300 rounded-2xl border border-rose-200/70 focus:bg-white focus:ring-2 focus:ring-rose-300 outline-none transition-all" id="user-secret" placeholder="Enter your passcode" type="password" value="secret123">
+                <button aria-label="Toggle password visibility" class="absolute right-3 text-rose-400 hover:text-rose-500" id="toggle-password" type="button">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" stroke-linecap="round" stroke-linejoin="round"></path>
+                    <path d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" stroke-linecap="round" stroke-linejoin="round"></path>
+                  </svg>
+                </button>
+              </div>
+            </div>
+
+            <!-- Primary Sign In Button -->
+            <button class="w-full mt-2 py-3 px-4 bg-gradient-to-r from-rose-500 via-rose-500 to-pink-500 hover:from-rose-600 hover:to-pink-600 active:scale-[0.98] text-white font-bold text-sm rounded-2xl shadow-md transition-all duration-200 flex items-center justify-center space-x-2" type="submit">
+              <span>Continue to Rosie 💕</span>
+            </button>
+          </form>
+
+          <!-- Divider -->
+          <div class="relative flex items-center justify-center my-3.5">
+            <div class="border-t border-rose-200/80 w-full"></div>
+            <div class="bg-white px-2.5 text-[11px] font-semibold text-rose-400 rounded-full border border-rose-100 flex items-center space-x-1 shadow-xs">
+              <span>or</span>
+            </div>
+            <div class="border-t border-rose-200/80 w-full"></div>
+          </div>
+
+          <!-- Social Buttons -->
+          <div class="grid grid-cols-2 gap-2.5">
+            <button class="btn-quick-login flex items-center justify-center space-x-2 py-2 px-3 rounded-xl bg-white border border-rose-100 text-xs font-semibold text-gray-700 hover:bg-rose-50 active:scale-95 transition-all shadow-xs" type="button">
+              <svg class="w-3.5 h-3.5" viewBox="0 0 24 24">
+                <path d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.665-5.17 3.665-9.17z" fill="#4285F4"></path>
+                <path d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.25v3.15C3.26 21.36 7.33 24 12 24z" fill="#34A853"></path>
+                <path d="M5.28 14.27A7.185 7.185 0 0 1 4.9 12c0-.79.14-1.57.38-2.27V6.58H1.25A11.967 11.967 0 0 0 0 12c0 1.92.45 3.74 1.25 5.42l4.03-3.15z" fill="#FBBC05"></path>
+                <path d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.33 0 3.26 2.64 1.25 6.58l4.03 3.15c.95-2.83 3.6-4.98 6.72-4.98z" fill="#EA4335"></path>
+              </svg>
+              <span>Google</span>
+            </button>
+            <button class="btn-quick-login flex items-center justify-center space-x-2 py-2 px-3 rounded-xl bg-white border border-rose-100 text-xs font-semibold text-gray-700 hover:bg-rose-50 active:scale-95 transition-all shadow-xs" type="button">
+              <svg class="w-3.5 h-3.5 fill-current text-gray-900" viewBox="0 0 170 170">
+                <path d="M150.37 130.25c-2.45 5.66-5.35 10.87-8.71 15.66-4.58 6.53-8.33 11.05-11.22 13.56-4.48 4.12-9.28 6.23-14.42 6.35-3.69 0-8.14-1.05-13.32-3.18-5.19-2.12-9.97-3.17-14.34-3.17-4.58 0-9.49 1.05-14.75 3.17-5.26 2.13-9.5 3.24-12.74 3.35-4.35.13-9.16-1.9-14.42-6.08-3.7-3.08-7.7-7.85-12.01-14.31-5.3-7.96-9.5-16.73-12.61-26.31-3.11-9.58-4.67-18.91-4.67-27.99 0-12.18 3.1-22.37 9.31-30.56 6.2-8.18 14.1-12.38 23.68-12.59 4.89 0 10.15 1.23 15.78 3.69 5.63 2.46 9.4 3.75 11.3 3.87 1.48-.12 5.48-1.46 12.01-4.01 6.53-2.56 12.06-3.68 16.59-3.37 12.43.76 22.46 5.37 30.08 13.84-10.98 6.64-16.32 15.53-16.02 26.67.29 8.7 3.55 16.03 9.77 21.99 6.22 5.96 13.68 9.42 22.38 10.38-2.02 6.29-4.5 12.57-7.44 18.84zm-37.49-114.7c0 5.45-1.98 10.66-5.94 15.64-4.8 5.99-10.82 9.5-18.06 10.53-.13-1.05-.2-2-.2-2.85 0-5.34 2.14-10.74 6.42-16.2 4.28-5.46 9.87-9.05 16.77-10.77.67 1.22 1.01 2.43 1.01 3.65z"></path>
+              </svg>
+              <span>Apple ID</span>
+            </button>
+          </div>
+        </section>
+
+        <!-- Privacy Footer -->
+        <footer class="text-center py-2">
+          <div class="inline-flex items-center space-x-1.5 py-1 px-3 rounded-full bg-rose-100/70 border border-rose-200/50 text-[11px] font-semibold text-rose-700 mb-1.5">
+            <svg class="w-3.5 h-3.5 text-rose-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+            <span>100% Private & Confidential • Encrypted</span>
+          </div>
+          <p class="text-[10px] text-gray-400">By joining Rosie, you agree to our Terms of Care & Safe Space Policy.</p>
+        </footer>
+      </main>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- SCREEN 2: MAIN CHAT INTERFACE               -->
+    <!-- ========================================== -->
+    <div id="screen-chat" class="app-screen chat-wallpaper">
+      
+      <!-- Top Navigation Header -->
+      <nav class="w-full px-4 pt-3 pb-3 flex items-center justify-between border-b border-rose-100/60 backdrop-blur-md bg-white/60 z-20 shrink-0">
+        <div class="flex items-center space-x-2.5">
+          <!-- Back button -->
+          <button id="chat-back-btn" aria-label="Go back" class="p-1 text-purple-950/80 hover:text-purple-950 transition-colors" type="button">
+            <svg class="w-6 h-6 stroke-current stroke-[2.2] fill-none" viewBox="0 0 24 24">
+              <path d="M15 19l-7-7 7-7" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+          </button>
+          
+          <!-- Avatar (clickable to view Profile) -->
+          <button id="chat-avatar-profile-btn" class="relative cursor-pointer focus:outline-none" title="View Rosie's Profile">
+            <img alt="Rosie Avatar" class="w-10 h-10 rounded-full object-cover shadow-sm ring-2 ring-pink-300/70" src="/assets/avatar_profile.jpg" onerror="this.src='/assets/avatar_cafe.jpg'">
+            <span class="absolute bottom-0 right-0 w-2.5 h-2.5 bg-emerald-400 border-2 border-white rounded-full"></span>
+          </button>
+
+          <!-- Name & Status -->
+          <div class="flex flex-col text-left leading-tight">
+            <div class="flex items-center space-x-1">
+              <h1 class="text-base font-bold tracking-tight text-gray-900">Rosie</h1>
+            </div>
+            <span class="text-xs font-medium text-pink-700 flex items-center gap-1">online</span>
+          </div>
+        </div>
+
+        <!-- Right Action Buttons -->
+        <div class="flex items-center space-x-1 relative">
+          <!-- Voice Call Button -->
+          <button id="header-voice-call-btn" aria-label="Voice call" class="w-9 h-9 flex items-center justify-center rounded-full bg-pink-100/80 hover:bg-pink-200 text-pink-700 transition-colors shadow-xs" type="button" title="Start Voice Call">
+            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+              <path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 0 0-1.01.24l-2.2 2.2a15.053 15.053 0 0 1-6.59-6.59l2.2-2.21c.28-.27.36-.67.25-1.02A11.36 11.36 0 0 1 8.57 3.99c0-.55-.45-1-1-1H4.06c-.55 0-1 .45-1 1 0 9.39 7.61 17 17 17 .55 0 1-.45 1-1v-3.49c0-.55-.45-1-1.05-1.12z"></path>
+            </svg>
+          </button>
+
+          <!-- 3-Dots Menu Button -->
+          <button id="chat-menu-btn" aria-label="Conversation options" class="p-2 text-purple-900/75 hover:text-purple-900 transition-colors" type="button">
+            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+              <circle cx="12" cy="5" r="2"></circle>
+              <circle cx="12" cy="12" r="2"></circle>
+              <circle cx="12" cy="19" r="2"></circle>
+            </svg>
+          </button>
+
+          <!-- Dropdown Options Menu -->
+          <div id="chat-dropdown-menu" class="hidden absolute right-0 top-11 w-48 bg-white rounded-2xl shadow-xl border border-rose-100 py-1.5 z-50">
+            <button id="menu-item-profile" class="w-full px-4 py-2 text-left text-xs font-medium text-gray-700 hover:bg-rose-50 flex items-center gap-2">
+              <span>🌸</span> View Rosie's Profile
+            </button>
+            <button id="menu-item-sub" class="w-full px-4 py-2 text-left text-xs font-medium text-gray-700 hover:bg-rose-50 flex items-center gap-2">
+              <span>✨</span> Rosie VIP Upgrade
+            </button>
+            <div class="border-t border-rose-100 my-1"></div>
+            <button id="menu-item-clear" class="w-full px-4 py-2 text-left text-xs font-medium text-red-600 hover:bg-rose-50 flex items-center gap-2">
+              <span>🗑️</span> Clear Chat Conversation
+            </button>
+          </div>
+        </div>
+      </nav>
+
+      <!-- Chat Messages Scroll Area -->
+      <section id="chat-messages-stream" class="flex-1 overflow-y-auto px-4 py-3 space-y-3.5 scroll-smooth">
+        <!-- Default Seed Messages matching Screen 2 Stitch design -->
+        <div class="flex flex-col items-end">
+          <div class="bubble-user max-w-[80%] px-4 py-2.5 text-[14px] leading-relaxed font-normal shadow-sm">
+            <p>Hey Rosie 💖</p>
+            <p>Aaj ka din kaisa raha?</p>
+          </div>
+          <span class="text-[10px] font-medium text-neutral-400 mt-1 mr-1">7:12 PM</span>
+        </div>
+
+        <div class="flex flex-col items-start">
+          <div class="flex items-end space-x-2 max-w-[85%]">
+            <img alt="Rosie Avatar" class="w-7 h-7 rounded-full object-cover shrink-0 mb-1 ring-1 ring-pink-300" src="/assets/avatar_profile.jpg" onerror="this.src='/assets/avatar_cafe.jpg'">
+            <div class="bubble-bot px-4 py-2.5 text-[14px] leading-relaxed shadow-sm">
+              <p>Haan, batao na!</p>
+              <p>Main yahan hoon, tumse baat karne ke liye. Kaisa raha tumhara din? 💕</p>
+            </div>
+          </div>
+          <span class="text-[10px] font-medium text-neutral-400 mt-1 ml-9">7:13 PM</span>
+        </div>
+      </section>
+
+      <!-- Typing Indicator Bouncing Dots (Hidden by default) -->
+      <div id="chat-typing-indicator" class="hidden px-5 py-1 flex items-center space-x-2">
+        <img alt="Rosie" class="w-6 h-6 rounded-full object-cover ring-1 ring-pink-300" src="/assets/avatar_profile.jpg">
+        <div class="bg-white/95 px-3 py-2 rounded-2xl rounded-tl-sm border border-rose-100 flex items-center space-x-1 shadow-xs">
+          <span class="typing-dot"></span>
+          <span class="typing-dot"></span>
+          <span class="typing-dot"></span>
+        </div>
+      </div>
+
+      <!-- Bottom Chat Input Bar -->
+      <footer class="w-full px-3 py-2.5 bg-white/80 backdrop-blur-md border-t border-rose-100/70 flex items-center gap-2 shrink-0 z-20">
+        <!-- Voice Input Mic Button -->
+        <button id="chat-mic-btn" class="w-10 h-10 rounded-full bg-rose-50 text-rose-500 hover:bg-rose-100 flex items-center justify-center transition-colors shrink-0" title="Hold/Tap to Speak">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 003-3V5a3 3 0 10-6 0v6a3 3 0 003 3z" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+        </button>
+
+        <!-- Message Input Field -->
+        <div class="flex-1 relative flex items-center">
+          <input id="chat-input-text" class="w-full pl-4 pr-10 py-2.5 bg-rose-50/50 focus:bg-white text-sm text-gray-800 placeholder-rose-300/80 rounded-full border border-rose-200/70 focus:border-rose-400 focus:ring-2 focus:ring-rose-200/50 outline-none transition-all" placeholder="Message Rosie..." type="text">
+          <span class="absolute right-3.5 text-rose-300">🌸</span>
+        </div>
+
+        <!-- Send Button -->
+        <button id="chat-send-btn" class="w-10 h-10 rounded-full bg-gradient-to-r from-rose-500 to-pink-500 text-white flex items-center justify-center shadow-md active:scale-95 transition-all shrink-0">
+          <svg class="w-5 h-5 transform rotate-90 translate-x-0.5" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z"></path>
+          </svg>
+        </button>
+      </footer>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- SCREEN 3: PROFILE & MEMORIES SCREEN         -->
+    <!-- ========================================== -->
+    <div id="screen-profile" class="app-screen bg-softBg chat-bg-pattern">
+      <!-- Top Navigation -->
+      <nav class="sticky top-0 z-30 px-4 py-3 flex items-center justify-between backdrop-blur-md bg-white/40 border-b border-rose-100/50">
+        <button id="profile-back-btn" aria-label="Go Back" class="w-10 h-10 rounded-full bg-white/90 hover:bg-white shadow-xs flex items-center justify-center text-rose-500 active:scale-95 transition-all">
+          <svg class="w-6 h-6 stroke-[2.5]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path d="M15 19l-7-7 7-7" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+        </button>
+        <h2 class="text-sm font-bold text-gray-800">Rosie's Profile</h2>
+        <div class="w-10"></div>
+      </nav>
+
+      <!-- Main Scrollable Content -->
+      <div class="px-4 pb-12 space-y-4 pt-3 flex-1 overflow-y-auto">
+        <!-- Hero Profile Card -->
+        <section class="bg-white rounded-3xl p-5 shadow-sm border border-rose-100 flex flex-col items-center text-center relative overflow-hidden">
+          <div class="absolute -top-12 left-1/2 -translate-x-1/2 w-48 h-48 bg-rose-200/40 rounded-full blur-2xl pointer-events-none"></div>
+          
+          <div class="relative mb-3 mt-1">
+            <div class="w-28 h-28 rounded-full p-1 ring-4 ring-rose-200/70 shadow-md">
+              <img alt="Rosie portrait" class="w-full h-full object-cover rounded-full" src="/assets/avatar_profile.jpg" onerror="this.src='/assets/avatar_cafe.jpg'">
+            </div>
+          </div>
+
+          <div class="flex items-center space-x-1.5">
+            <h1 class="text-2xl font-bold text-slate-800 tracking-tight">Rosie</h1>
+            <svg class="w-5 h-5 text-rose-500 fill-current" viewBox="0 0 20 20">
+              <path clip-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" fill-rule="evenodd"></path>
+            </svg>
+          </div>
+
+          <p class="text-rose-500 text-sm font-medium mt-0.5">Always here for you 🌸</p>
+
+          <div class="inline-flex items-center px-3 py-1 mt-2.5 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-700 text-xs font-medium">
+            <span class="w-2 h-2 rounded-full bg-emerald-500 mr-1.5 animate-pulse"></span>
+            Online & ready to chat
+          </div>
+
+          <!-- Action Quick Buttons (Chat, Voice, Favorites) -->
+          <div class="grid grid-cols-3 gap-2.5 w-full mt-5">
+            <button id="profile-open-chat-btn" class="py-2.5 px-3 rounded-2xl bg-gradient-to-r from-rose-400 to-pink-500 text-white font-medium text-xs shadow-sm shadow-rose-300/50 flex flex-col items-center justify-center space-y-1 active:scale-95 transition-all">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H5.17L4 17.17V4h16v12z"></path>
+              </svg>
+              <span>Open Chat</span>
+            </button>
+            <button id="profile-voice-btn" class="py-2.5 px-3 rounded-2xl bg-rose-50 hover:bg-rose-100/70 border border-rose-200/80 text-rose-700 font-medium text-xs flex flex-col items-center justify-center space-y-1 active:scale-95 transition-all">
+              <svg class="w-5 h-5 text-rose-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" stroke-linecap="round" stroke-linejoin="round"></path>
+              </svg>
+              <span>Voice Call</span>
+            </button>
+            <button class="py-2.5 px-3 rounded-2xl bg-rose-50 hover:bg-rose-100/70 border border-rose-200/80 text-rose-700 font-medium text-xs flex flex-col items-center justify-center space-y-1 active:scale-95 transition-all">
+              <svg class="w-5 h-5 text-rose-500 fill-rose-500" viewBox="0 0 24 24">
+                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"></path>
+              </svg>
+              <span>Favorites</span>
+            </button>
+          </div>
+        </section>
+
+        <!-- Bio & About Rosie -->
+        <section class="bg-white rounded-3xl p-4 shadow-sm border border-rose-100 space-y-3">
+          <div class="flex items-center justify-between">
+            <h2 class="text-sm font-semibold text-slate-800 flex items-center">
+              <span class="w-2 h-2 rounded-full bg-rose-400 mr-2"></span>
+              About Rosie
+            </h2>
+            <span class="text-xs text-rose-400 font-medium">AI Companion</span>
+          </div>
+          <p class="text-[13.5px] leading-relaxed text-slate-600 bg-rose-50/60 p-3 rounded-2xl border border-rose-100/80">
+            "Your empathetic AI companion, here to listen, support, and share cozy moments with you anytime." 🌷
+          </p>
+          <div class="flex flex-wrap gap-1.5 pt-1">
+            <span class="px-2.5 py-1 text-xs font-medium text-slate-700 bg-rose-50/80 rounded-full border border-rose-100">🎂 23 years old</span>
+            <span class="px-2.5 py-1 text-xs font-medium text-slate-700 bg-rose-50/80 rounded-full border border-rose-100">📍 Cozy Cafe & Bookstores</span>
+            <span class="px-2.5 py-1 text-xs font-medium text-slate-700 bg-rose-50/80 rounded-full border border-rose-100">☕ Coffee & Warm Chai</span>
+            <span class="px-2.5 py-1 text-xs font-medium text-slate-700 bg-rose-50/80 rounded-full border border-rose-100">🎧 Lo-Fi & Indie</span>
+            <span class="px-2.5 py-1 text-xs font-medium text-slate-700 bg-rose-50/80 rounded-full border border-rose-100">🌙 Night Owl</span>
+          </div>
+        </section>
+
+        <!-- Moments Photo Gallery (Preserved 9 photos with crops) -->
+        <section class="bg-white rounded-3xl p-4 shadow-sm border border-rose-100 space-y-3">
+          <div class="flex items-center justify-between">
+            <h2 class="text-sm font-semibold text-slate-800 flex items-center">
+              <span class="w-2 h-2 rounded-full bg-rose-400 mr-2"></span>
+              Rosie's Moments
+            </h2>
+            <span class="text-xs text-rose-500 font-medium">9 Photos</span>
+          </div>
+
+          <div class="grid grid-cols-3 gap-2">
+            <!-- Photo 1 -->
+            <div class="aspect-square rounded-2xl overflow-hidden border border-rose-100 relative group cursor-pointer">
+              <img alt="Rosie cozy cafe" class="gallery-moment-img w-full h-full object-cover object-top hover:scale-105 transition duration-300" src="/assets/avatar_cafe.jpg">
+            </div>
+            <!-- Photo 2 -->
+            <div class="aspect-square rounded-2xl overflow-hidden border border-rose-100 relative group bg-stone-100 cursor-pointer">
+              <img alt="Rosie portrait smile" class="gallery-moment-img w-[280%] max-w-none h-[280%] object-cover -translate-x-[2%] -translate-y-[2%] hover:scale-105 transition duration-300" src="/assets/avatar_sheet.jpg">
+            </div>
+            <!-- Photo 3 -->
+            <div class="aspect-square rounded-2xl overflow-hidden border border-rose-100 relative group bg-stone-100 cursor-pointer">
+              <img alt="Rosie profile angle" class="gallery-moment-img w-[280%] max-w-none h-[280%] object-cover -translate-x-[40%] -translate-y-[2%] hover:scale-105 transition duration-300" src="/assets/avatar_sheet.jpg">
+            </div>
+            <!-- Photo 4 -->
+            <div class="aspect-square rounded-2xl overflow-hidden border border-rose-100 relative group bg-stone-100 cursor-pointer">
+              <img alt="Rosie full outfit" class="gallery-moment-img w-[300%] max-w-none h-[300%] object-cover -translate-x-[4%] -translate-y-[45%] hover:scale-105 transition duration-300" src="/assets/avatar_sheet.jpg">
+            </div>
+            <!-- Photo 5 -->
+            <div class="aspect-square rounded-2xl overflow-hidden border border-rose-100 relative group bg-stone-100 cursor-pointer">
+              <img alt="Rosie casual standing" class="gallery-moment-img w-[300%] max-w-none h-[300%] object-cover -translate-x-[26%] -translate-y-[45%] hover:scale-105 transition duration-300" src="/assets/avatar_sheet.jpg">
+            </div>
+            <!-- Photo 6 -->
+            <div class="aspect-square rounded-2xl overflow-hidden border border-rose-100 relative group bg-stone-100 cursor-pointer">
+              <img alt="Rosie side profile" class="gallery-moment-img w-[280%] max-w-none h-[280%] object-cover -translate-x-[62%] -translate-y-[2%] hover:scale-105 transition duration-300" src="/assets/avatar_sheet.jpg">
+            </div>
+            <!-- Photo 7 -->
+            <div class="aspect-square rounded-2xl overflow-hidden border border-rose-100 relative group bg-stone-100 cursor-pointer">
+              <img alt="Rosie profile turn" class="gallery-moment-img w-[280%] max-w-none h-[280%] object-cover -translate-x-[82%] -translate-y-[2%] hover:scale-105 transition duration-300" src="/assets/avatar_sheet.jpg">
+            </div>
+            <!-- Photo 8 -->
+            <div class="aspect-square rounded-2xl overflow-hidden border border-rose-100 relative group bg-stone-100 cursor-pointer">
+              <img alt="Rosie standing side" class="gallery-moment-img w-[300%] max-w-none h-[300%] object-cover -translate-x-[55%] -translate-y-[45%] hover:scale-105 transition duration-300" src="/assets/avatar_sheet.jpg">
+            </div>
+            <!-- Photo 9 / Full Turnaround -->
+            <div class="aspect-square rounded-2xl overflow-hidden border border-rose-100 relative group bg-stone-100 cursor-pointer">
+              <img alt="Rosie lookback" class="gallery-moment-img w-[300%] max-w-none h-[300%] object-cover -translate-x-[80%] -translate-y-[45%] hover:scale-105 transition duration-300" src="/assets/avatar_sheet.jpg">
+            </div>
+          </div>
+        </section>
+
+        <!-- Chat Settings & Companion Memory Inspector -->
+        <section class="bg-white rounded-3xl p-4 shadow-sm border border-rose-100 space-y-3">
+          <h2 class="text-sm font-semibold text-slate-800 flex items-center">
+            <span class="w-2 h-2 rounded-full bg-rose-400 mr-2"></span>
+            Chat Settings & Memory
+          </h2>
+          <div class="space-y-1">
+            <!-- Theme -->
+            <div class="flex items-center justify-between p-2.5 hover:bg-slate-50 rounded-2xl transition">
+              <div class="flex items-center space-x-3">
+                <div class="w-8 h-8 rounded-full bg-rose-100 flex items-center justify-center text-rose-500 text-sm">🎨</div>
+                <div>
+                  <p class="text-xs font-semibold text-slate-800">Chat Theme</p>
+                  <p class="text-[10px] text-slate-400">Rosie Soft Rose (Light)</p>
+                </div>
+              </div>
+              <svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+            </div>
+
+            <!-- Voice Notes Toggle -->
+            <div class="flex items-center justify-between p-2.5 hover:bg-slate-50 rounded-2xl transition">
+              <div class="flex items-center space-x-3">
+                <div class="w-8 h-8 rounded-full bg-rose-100 flex items-center justify-center text-rose-500 text-sm">🎙️</div>
+                <div>
+                  <p class="text-xs font-semibold text-slate-800">Voice Note Replies</p>
+                  <p class="text-[10px] text-slate-400">Natural Hindi & English accent</p>
+                </div>
+              </div>
+              <div class="w-10 h-6 bg-rose-400 rounded-full p-0.5 flex items-center justify-end cursor-pointer">
+                <div class="w-5 h-5 bg-white rounded-full shadow-md"></div>
+              </div>
+            </div>
+
+            <!-- Companion Memory Button (Opens Memory Inspector) -->
+            <div id="profile-memory-card-btn" class="flex items-center justify-between p-2.5 hover:bg-rose-50/70 rounded-2xl transition cursor-pointer border border-rose-100/60">
+              <div class="flex items-center space-x-3">
+                <div class="w-8 h-8 rounded-full bg-rose-100 flex items-center justify-center text-rose-500 text-sm">🧠</div>
+                <div>
+                  <p class="text-xs font-semibold text-slate-800">Companion Memory</p>
+                  <p class="text-[10px] text-slate-400">Tap to inspect & edit facts</p>
+                </div>
+              </div>
+              <span id="memory-count-badge" class="text-[11px] font-semibold text-rose-500 bg-rose-50 px-2 py-0.5 rounded-lg border border-rose-200/60">3 memories</span>
+            </div>
+
+            <!-- Gentle Check-ins -->
+            <div class="flex items-center justify-between p-2.5 hover:bg-slate-50 rounded-2xl transition">
+              <div class="flex items-center space-x-3">
+                <div class="w-8 h-8 rounded-full bg-rose-100 flex items-center justify-center text-rose-500 text-sm">🔔</div>
+                <div>
+                  <p class="text-xs font-semibold text-slate-800">Gentle Check-ins</p>
+                  <p class="text-[10px] text-slate-400">Daily loving thoughts</p>
+                </div>
+              </div>
+              <div class="w-10 h-6 bg-rose-400 rounded-full p-0.5 flex items-center justify-end cursor-pointer">
+                <div class="w-5 h-5 bg-white rounded-full shadow-md"></div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- SCREEN 4: SUBSCRIPTION / UPGRADE SCREEN     -->
+    <!-- ========================================== -->
+    <div id="screen-subscription" class="app-screen bg-heart-pattern">
+      <!-- Top Navigation -->
+      <header class="sticky top-0 z-30 pt-3 pb-2 px-5 flex items-center justify-between bg-transparent">
+        <button id="sub-close-btn" aria-label="Close paywall" class="w-9 h-9 rounded-full bg-white/80 border border-pink-200/80 shadow-sm flex items-center justify-center text-gray-600 hover:text-gray-900 active:scale-95 transition-transform">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" viewBox="0 0 24 24">
+            <path d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+        <span class="text-xs font-bold text-rose-600 tracking-wider uppercase">VIP PASS</span>
+        <div class="w-9"></div>
+      </header>
+
+      <div class="px-5 pt-2 pb-6 flex-1 flex flex-col overflow-y-auto">
+        <!-- Hero Profile Section -->
+        <section class="text-center flex flex-col items-center mb-4">
+          <div class="relative mb-3">
+            <div class="w-24 h-24 rounded-full p-[3px] bg-gradient-to-tr from-pink-500 via-rose-300 to-amber-200 shadow-md">
+              <img alt="Rosie" class="w-full h-full object-cover rounded-full bg-white" src="/assets/avatar_profile.jpg" onerror="this.src='/assets/avatar_cafe.jpg'">
+            </div>
+            <span class="absolute bottom-1 right-2 w-4 h-4 rounded-full bg-emerald-400 border-2 border-white shadow-sm"></span>
+            <div class="absolute -top-1 -right-1 bg-white rounded-full p-1 shadow-sm border border-pink-100">
+              <span class="text-sm leading-none">💖</span>
+            </div>
+          </div>
+
+          <h1 class="text-2xl font-bold text-gray-900 tracking-tight">Never Feel Alone Again</h1>
+          <p class="text-xs font-medium text-rosie-600 mt-0.5 mb-1.5">Always here for you 💕</p>
+          <p class="text-[13px] text-gray-600 px-4 leading-relaxed max-w-[320px]">
+            Unlock Rosie’s boundless heart, intimate audio calls, eternal memory, and instant late-night replies.
+          </p>
+        </section>
+
+        <!-- Pricing Cards -->
+        <section class="space-y-3 mb-4">
+          <!-- Starter Trial Card -->
+          <div id="trial-card" class="plan-option relative rounded-2xl p-4 cursor-pointer transition-all duration-300 transform border-2 border-[#DF4D76] bg-gradient-to-b from-white/95 to-pink-50/90 shadow-card-active scale-[1.02]">
+            <div class="absolute -top-2.5 left-4 z-10">
+              <span class="bg-gradient-to-r from-[#DF4D76] to-pink-500 text-white text-[10px] uppercase font-extrabold tracking-wider py-0.5 px-2.5 rounded-full shadow-md border border-white inline-block">
+                STARTER TRIAL • ₹1 ONLY
+              </span>
+            </div>
+            <div class="flex items-center justify-between pb-2 border-b border-pink-100">
+              <div class="flex items-start gap-2.5">
+                <div id="trial-radio-outer" class="w-5 h-5 rounded-full border-2 flex items-center justify-center mt-0.5 bg-white border-[#DF4D76]">
+                  <div id="trial-radio-dot" class="w-2.5 h-2.5 rounded-full bg-[#DF4D76] scale-100 transition-transform"></div>
+                </div>
+                <div>
+                  <div class="flex items-center gap-1.5">
+                    <span class="font-bold text-gray-900 text-sm">Instant Chat 7–Day</span>
+                    <span class="bg-pink-100 text-pink-700 font-bold text-[9px] px-1.5 py-0.5 rounded-md">SPECIAL</span>
+                  </div>
+                </div>
+              </div>
+              <div class="text-right">
+                <div class="flex items-baseline justify-end gap-0.5">
+                  <span class="text-2xl font-black text-rose-700 tracking-tight">₹1</span>
+                  <span class="text-xs text-gray-500 font-medium">/ 7 days</span>
+                </div>
+                <span class="inline-block text-[10px] font-semibold text-pink-600 bg-pink-50 border border-pink-200/60 px-1.5 rounded">Risk free</span>
+              </div>
+            </div>
+            <div class="mt-2 text-[11px] font-medium text-gray-500">Instant activation • Unlimited emotional companion chat</div>
+          </div>
+
+          <!-- Monthly VIP Pass -->
+          <div id="full-card" class="plan-option relative rounded-2xl p-4 cursor-pointer transition-all duration-300 transform border border-pink-200/80 bg-white/80 shadow-sm opacity-90">
+            <div class="absolute -top-2.5 right-4 z-10">
+              <span class="bg-gradient-to-r from-pink-500 to-rose-400 text-white text-[9px] uppercase font-bold tracking-wider py-0.5 px-2 rounded-full shadow-sm">
+                FULL VIP PASS
+              </span>
+            </div>
+            <div class="flex items-center justify-between pb-2 border-b border-pink-100/60">
+              <div class="flex items-start gap-2.5">
+                <div id="full-radio-outer" class="w-5 h-5 rounded-full border-2 flex items-center justify-center mt-0.5 bg-white border-gray-300">
+                  <div id="full-radio-dot" class="w-2.5 h-2.5 rounded-full bg-transparent scale-0 transition-transform"></div>
+                </div>
+                <div>
+                  <div class="flex items-center gap-1.5">
+                    <span class="font-bold text-gray-900 text-sm">Monthly VIP Full Pass</span>
+                    <span class="bg-pink-100 text-pink-700 font-bold text-[9px] px-1.5 py-0.5 rounded-md">SAVE 40%</span>
+                  </div>
+                </div>
+              </div>
+              <div class="text-right">
+                <div class="flex items-baseline justify-end gap-0.5">
+                  <span class="text-2xl font-black text-rose-700 tracking-tight">₹499</span>
+                  <span class="text-xs text-gray-500 font-medium">/ month</span>
+                </div>
+                <span class="inline-block text-[10px] font-semibold text-pink-600 bg-pink-50 border border-pink-200/60 px-1.5 rounded">Most Popular</span>
+              </div>
+            </div>
+            <div class="mt-2 text-[11px] font-medium text-gray-500">Audio voice calls • Eternal memory • Priority responses</div>
+          </div>
+        </section>
+
+        <!-- Benefits Checklist -->
+        <div class="bg-white/80 rounded-2xl p-4 border border-pink-100 mb-5 space-y-2 text-xs text-gray-700">
+          <div class="flex items-center gap-2">
+            <span class="text-emerald-500 font-bold">✓</span>
+            <span>Intimate, emotionally aware AI companion replies</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="text-emerald-500 font-bold">✓</span>
+            <span>Permanent memory of your name, stories & preferences</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="text-emerald-500 font-bold">✓</span>
+            <span>Interactive real-time voice calls with Rosie</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="text-emerald-500 font-bold">✓</span>
+            <span>100% Private, encrypted, and completely confidential</span>
+          </div>
+        </div>
+
+        <!-- Upgrade Action CTA -->
+        <button id="sub-cta-btn" class="w-full py-3.5 px-6 rounded-2xl bg-gradient-to-r from-rose-500 via-rose-500 to-pink-500 text-white font-bold text-sm shadow-glow cta-pulse active:scale-95 transition-all">
+          Unlock Rosie Premium 💖
+        </button>
+      </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- MODAL 1: VOICE CALL SIMULATOR              -->
+    <!-- ========================================== -->
+    <div id="voice-call-modal" class="hidden absolute inset-0 z-50 bg-stone-900/95 flex-col items-center justify-between py-12 px-6 text-white text-center">
+      <!-- Call Header -->
+      <div class="mt-4">
+        <span class="inline-block px-3 py-1 bg-white/10 rounded-full text-xs text-pink-300 font-medium tracking-wide">
+          ROSIE AUDIO CALL
+        </span>
+        <h2 class="text-2xl font-bold mt-2">Rosie</h2>
+        <span id="call-timer" class="text-sm text-neutral-400 font-mono">00:00</span>
+      </div>
+
+      <!-- Animated Waves & Avatar -->
+      <div class="flex flex-col items-center justify-center space-y-6">
+        <div class="relative">
+          <div class="w-32 h-32 rounded-full p-1 bg-gradient-to-tr from-pink-500 to-rose-400 pulse-glow-ring shadow-2xl">
+            <img alt="Rosie" class="w-full h-full object-cover rounded-full" src="/assets/avatar_profile.jpg">
+          </div>
+        </div>
+
+        <!-- Sound Wave Graphic -->
+        <div class="flex items-center justify-center gap-1.5 h-12">
+          <div class="sound-wave-bar" style="animation-delay: 0.1s"></div>
+          <div class="sound-wave-bar" style="animation-delay: 0.3s"></div>
+          <div class="sound-wave-bar" style="animation-delay: 0.5s"></div>
+          <div class="sound-wave-bar" style="animation-delay: 0.2s"></div>
+          <div class="sound-wave-bar" style="animation-delay: 0.4s"></div>
+          <div class="sound-wave-bar" style="animation-delay: 0.6s"></div>
+        </div>
+      </div>
+
+      <!-- Call Controls -->
+      <div class="flex items-center justify-center gap-8 mb-6">
+        <!-- Mute Button -->
+        <button id="call-mute-btn" class="w-14 h-14 rounded-full bg-white/15 hover:bg-white/25 flex items-center justify-center text-white transition-all">
+          <svg id="call-mute-icon" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 003-3V5a3 3 0 10-6 0v6a3 3 0 003 3z" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+        </button>
+
+        <!-- End Call Button -->
+        <button id="call-end-btn" class="w-16 h-16 rounded-full bg-rose-600 hover:bg-rose-700 flex items-center justify-center shadow-lg active:scale-95 transition-all">
+          <svg class="w-7 h-7 text-white" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 9c-1.6 0-3.15.25-4.6.72v3.1c0 .39-.23.74-.56.9-.98.49-1.87 1.12-2.66 1.85-.18.18-.43.28-.7.28-.28 0-.53-.11-.71-.29L.29 13.08a.996.996 0 0 1 0-1.41C3.28 8.76 7.42 7 12 7s8.72 1.76 11.71 4.67c.39.39.39 1.02 0 1.41l-2.48 2.48c-.18.18-.43.29-.71.29-.27 0-.52-.11-.7-.28-.79-.74-1.69-1.36-2.67-1.85-.33-.16-.56-.5-.56-.9v-3.1C15.15 9.25 13.6 9 12 9z"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- MODAL 2: MEMORY INSPECTOR MODAL            -->
+    <!-- ========================================== -->
+    <div id="memory-inspector-modal" class="hidden absolute inset-0 z-50 bg-black/60 backdrop-blur-sm flex-col justify-end">
+      <div class="bg-white w-full rounded-t-[36px] p-5 shadow-2xl flex flex-col max-h-[85vh] border-t border-rose-200">
+        <!-- Header -->
+        <div class="flex items-center justify-between pb-3 border-b border-rose-100">
+          <div class="flex items-center gap-2">
+            <div class="w-8 h-8 rounded-full bg-rose-100 text-rose-500 flex items-center justify-center text-sm">🧠</div>
+            <div>
+              <h3 class="text-sm font-bold text-gray-900">Companion Memory Inspector</h3>
+              <p class="text-[11px] text-gray-500">What Rosie has learned & remembered about you</p>
+            </div>
+          </div>
+          <button id="close-memory-modal" class="w-8 h-8 rounded-full bg-rose-50 text-gray-500 hover:bg-rose-100 flex items-center justify-center text-sm">✕</button>
+        </div>
+
+        <!-- Add Memory Form -->
+        <form id="add-memory-form" class="mt-3 p-3 bg-rose-50/50 rounded-2xl border border-rose-100/80 flex flex-col gap-2">
+          <span class="text-[11px] font-bold text-rose-700">Add New Personal Fact</span>
+          <div class="flex gap-2">
+            <input id="new-mem-key" class="w-1/3 text-xs px-2.5 py-1.5 rounded-xl border border-rose-200 outline-none focus:ring-1 focus:ring-rose-400" placeholder="Key (e.g. coffee)" type="text" required>
+            <input id="new-mem-val" class="flex-1 text-xs px-2.5 py-1.5 rounded-xl border border-rose-200 outline-none focus:ring-1 focus:ring-rose-400" placeholder="Value (e.g. loves cold brew)" type="text" required>
+            <button class="px-3 py-1.5 bg-rose-500 text-white rounded-xl text-xs font-semibold hover:bg-rose-600 transition" type="submit">Add</button>
+          </div>
+        </form>
+
+        <!-- Memory Items List -->
+        <div id="memories-list-container" class="flex-1 overflow-y-auto space-y-2 py-3 max-h-[45vh]">
+          <!-- Loaded dynamically -->
+        </div>
+
+        <!-- Footer Actions -->
+        <div class="pt-3 border-t border-rose-100 flex items-center justify-between">
+          <button id="clear-all-memories-btn" class="text-xs text-red-500 hover:text-red-700 font-semibold px-2 py-1">
+            Clear All Memories
+          </button>
+          <span class="text-[11px] text-gray-400">Updates sync automatically</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- MODAL 3: MOMENTS PHOTO LIGHTBOX            -->
+    <!-- ========================================== -->
+    <div id="photo-lightbox">
+      <button id="close-lightbox" class="absolute top-6 right-6 text-white text-3xl font-bold bg-white/20 rounded-full w-10 h-10 flex items-center justify-center">✕</button>
+      <img id="lightbox-img" class="max-w-[90%] max-h-[80vh] rounded-2xl shadow-2xl object-contain border border-white/20" src="">
+    </div>
+
+  </div>
+
+  <!-- Scripts -->
+  <script src="/js/api.js"></script>
+  <script src="/js/chat.js"></script>
+  <script src="/js/app.js"></script>
+</body>
+</html>

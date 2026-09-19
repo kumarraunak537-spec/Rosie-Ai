@@ -1,0 +1,340 @@
+{
+  "rocky_user": {
+    "userId": "rocky_user",
+    "nickname": null,
+    "languageStyle": {
+      "value": "Hinglish",
+      "confidence": 0.95,
+      "source": "default",
+      "lastUpdated": "2026-09-15T17:33:23.885Z"
+    },
+    "favoriteTopics": [],
+    "hobbies": [],
+    "likes": [],
+    "dislikes": [],
+    "avoidTopics": [],
+    "explicitMemories": [],
+    "frequentlyDiscussedTopics": {},
+    "preferences": {
+      "likesTeasing": {
+        "value": true,
+        "confidence": 0.7,
+        "source": "default",
+        "lastUpdated": "2026-09-15T17:33:23.885Z"
+      },
+      "prefersShortBubbles": {
+        "value": true,
+        "confidence": 0.75,
+        "source": "default",
+        "lastUpdated": "2026-09-15T17:33:23.885Z"
+      },
+      "romanticAppetite": {
+        "value": "moderate",
+        "confidence": 0.5,
+        "source": "romantic_reciprocation",
+        "lastUpdated": "2026-09-15T17:34:24.980Z"
+      },
+      "humorStyle": {
+        "value": "witty_playful",
+        "confidence": 0.7,
+        "source": "default",
+        "lastUpdated": "2026-09-15T17:33:23.885Z"
+      }
+    },
+    "interactionMetrics": {
+      "totalTurns": 8,
+      "firstSeen": "2026-09-15T17:33:23.885Z",
+      "lastSeen": "2026-09-15T17:42:19.668Z"
+    }
+  },
+  "default": {
+    "userId": "default",
+    "nickname": null,
+    "languageStyle": {
+      "value": "Hinglish",
+      "confidence": 0.95,
+      "source": "default",
+      "lastUpdated": "2026-09-15T17:38:45.700Z"
+    },
+    "favoriteTopics": [],
+    "hobbies": [],
+    "likes": [],
+    "dislikes": [],
+    "avoidTopics": [],
+    "explicitMemories": [],
+    "frequentlyDiscussedTopics": {},
+    "preferences": {
+      "likesTeasing": {
+        "value": true,
+        "confidence": 0.78,
+        "source": "playful_response_positive",
+        "lastUpdated": "2026-09-16T19:25:04.956Z"
+      },
+      "prefersShortBubbles": {
+        "value": true,
+        "confidence": 0.98,
+        "source": "short_message_frequency",
+        "lastUpdated": "2026-09-18T10:48:27.247Z"
+      },
+      "romanticAppetite": {
+        "value": "moderate",
+        "confidence": 0.5,
+        "source": "romantic_reciprocation",
+        "lastUpdated": "2026-09-15T17:39:36.162Z"
+      },
+      "humorStyle": {
+        "value": "witty_playful",
+        "confidence": 0.7,
+        "source": "default",
+        "lastUpdated": "2026-09-15T17:38:45.700Z"
+      }
+    },
+    "interactionMetrics": {
+      "totalTurns": 265,
+      "firstSeen": "2026-09-15T17:38:45.700Z",
+      "lastSeen": "2026-09-18T10:48:27.250Z"
+    }
+  },
+  "user_test_50": {
+    "userId": "user_test_50",
+    "nickname": null,
+    "languageStyle": {
+      "value": "Hinglish",
+      "confidence": 0.95,
+      "source": "default",
+      "lastUpdated": "2026-09-16T18:01:52.173Z"
+    },
+    "favoriteTopics": [],
+    "hobbies": [],
+    "likes": [],
+    "dislikes": [
+      "hai"
+    ],
+    "avoidTopics": [],
+    "explicitMemories": [],
+    "frequentlyDiscussedTopics": {},
+    "preferences": {
+      "likesTeasing": {
+        "value": true,
+        "confidence": 0.71,
+        "source": "playful_response_positive",
+        "lastUpdated": "2026-09-16T18:02:48.124Z"
+      },
+      "prefersShortBubbles": {
+        "value": true,
+        "confidence": 0.98,
+        "source": "short_message_frequency",
+        "lastUpdated": "2026-09-16T18:03:31.876Z"
+      },
+      "romanticAppetite": {
+        "value": "high",
+        "confidence": 0.71,
+        "source": "romantic_reciprocation",
+        "lastUpdated": "2026-09-16T18:03:25.717Z"
+      },
+      "humorStyle": {
+        "value": "witty_playful",
+        "confidence": 0.7,
+        "source": "default",
+        "lastUpdated": "2026-09-16T18:01:52.175Z"
+      }
+    },
+    "interactionMetrics": {
+      "totalTurns": 52,
+      "firstSeen": "2026-09-16T18:01:52.175Z",
+      "lastSeen": "2026-09-16T18:03:31.878Z"
+    }
+  },
+  "tester": {
+    "userId": "tester",
+    "nickname": null,
+    "languageStyle": {
+      "value": "Hinglish",
+      "confidence": 0.95,
+      "source": "default",
+      "lastUpdated": "2026-09-16T21:05:27.765Z"
+    },
+    "favoriteTopics": [],
+    "hobbies": [],
+    "likes": [],
+    "dislikes": [],
+    "avoidTopics": [],
+    "explicitMemories": [],
+    "frequentlyDiscussedTopics": {},
+    "preferences": {
+      "likesTeasing": {
+        "value": true,
+        "confidence": 0.7,
+        "source": "default",
+        "lastUpdated": "2026-09-16T21:05:27.765Z"
+      },
+      "prefersShortBubbles": {
+        "value": true,
+        "confidence": 0.98,
+        "source": "short_message_frequency",
+        "lastUpdated": "2026-09-16T21:05:32.282Z"
+      },
+      "romanticAppetite": {
+        "value": "moderate",
+        "confidence": 0.65,
+        "source": "default",
+        "lastUpdated": "2026-09-16T21:05:27.765Z"
+      },
+      "humorStyle": {
+        "value": "witty_playful",
+        "confidence": 0.7,
+        "source": "default",
+        "lastUpdated": "2026-09-16T21:05:27.765Z"
+      }
+    },
+    "interactionMetrics": {
+      "totalTurns": 3,
+      "firstSeen": "2026-09-16T21:05:27.765Z",
+      "lastSeen": "2026-09-16T21:05:32.284Z"
+    }
+  },
+  "gate_user": {
+    "userId": "gate_user",
+    "nickname": null,
+    "languageStyle": {
+      "value": "Hinglish",
+      "confidence": 0.95,
+      "source": "default",
+      "lastUpdated": "2026-09-17T11:28:37.417Z"
+    },
+    "favoriteTopics": [],
+    "hobbies": [],
+    "likes": [],
+    "dislikes": [],
+    "avoidTopics": [],
+    "explicitMemories": [],
+    "frequentlyDiscussedTopics": {},
+    "preferences": {
+      "likesTeasing": {
+        "value": true,
+        "confidence": 0.55,
+        "source": "user_explicitly_disliked_tease",
+        "lastUpdated": "2026-09-17T11:28:54.187Z"
+      },
+      "prefersShortBubbles": {
+        "value": true,
+        "confidence": 0.98,
+        "source": "short_message_frequency",
+        "lastUpdated": "2026-09-17T11:29:42.294Z"
+      },
+      "romanticAppetite": {
+        "value": "high",
+        "confidence": 0.55,
+        "source": "romantic_reciprocation",
+        "lastUpdated": "2026-09-17T11:29:58.821Z"
+      },
+      "humorStyle": {
+        "value": "witty_playful",
+        "confidence": 0.7,
+        "source": "default",
+        "lastUpdated": "2026-09-17T11:28:37.417Z"
+      }
+    },
+    "interactionMetrics": {
+      "totalTurns": 26,
+      "firstSeen": "2026-09-17T11:28:37.417Z",
+      "lastSeen": "2026-09-17T11:29:59.052Z"
+    }
+  },
+  "test-user": {
+    "userId": "test-user",
+    "nickname": null,
+    "languageStyle": {
+      "value": "Hinglish",
+      "confidence": 0.95,
+      "source": "default",
+      "lastUpdated": "2026-09-18T09:16:52.252Z"
+    },
+    "favoriteTopics": [],
+    "hobbies": [],
+    "likes": [],
+    "dislikes": [],
+    "avoidTopics": [],
+    "explicitMemories": [],
+    "frequentlyDiscussedTopics": {},
+    "preferences": {
+      "likesTeasing": {
+        "value": true,
+        "confidence": 0.7,
+        "source": "default",
+        "lastUpdated": "2026-09-18T09:16:52.252Z"
+      },
+      "prefersShortBubbles": {
+        "value": true,
+        "confidence": 0.98,
+        "source": "short_message_frequency",
+        "lastUpdated": "2026-09-18T09:17:03.107Z"
+      },
+      "romanticAppetite": {
+        "value": "moderate",
+        "confidence": 0.65,
+        "source": "default",
+        "lastUpdated": "2026-09-18T09:16:52.252Z"
+      },
+      "humorStyle": {
+        "value": "witty_playful",
+        "confidence": 0.7,
+        "source": "default",
+        "lastUpdated": "2026-09-18T09:16:52.252Z"
+      }
+    },
+    "interactionMetrics": {
+      "totalTurns": 52,
+      "firstSeen": "2026-09-18T09:16:52.252Z",
+      "lastSeen": "2026-09-18T09:17:03.109Z"
+    }
+  },
+  "test_user": {
+    "userId": "test_user",
+    "nickname": null,
+    "languageStyle": {
+      "value": "Hinglish",
+      "confidence": 0.95,
+      "source": "default",
+      "lastUpdated": "2026-09-18T10:49:31.041Z"
+    },
+    "favoriteTopics": [],
+    "hobbies": [],
+    "likes": [],
+    "dislikes": [],
+    "avoidTopics": [],
+    "explicitMemories": [],
+    "frequentlyDiscussedTopics": {},
+    "preferences": {
+      "likesTeasing": {
+        "value": true,
+        "confidence": 0.55,
+        "source": "user_explicitly_disliked_tease",
+        "lastUpdated": "2026-09-18T10:51:32.408Z"
+      },
+      "prefersShortBubbles": {
+        "value": true,
+        "confidence": 0.98,
+        "source": "short_message_frequency",
+        "lastUpdated": "2026-09-18T11:02:37.458Z"
+      },
+      "romanticAppetite": {
+        "value": "moderate",
+        "confidence": 0.65,
+        "source": "default",
+        "lastUpdated": "2026-09-18T10:49:31.041Z"
+      },
+      "humorStyle": {
+        "value": "witty_playful",
+        "confidence": 0.7,
+        "source": "default",
+        "lastUpdated": "2026-09-18T10:49:31.041Z"
+      }
+    },
+    "interactionMetrics": {
+      "totalTurns": 60,
+      "firstSeen": "2026-09-18T10:49:31.041Z",
+      "lastSeen": "2026-09-18T11:02:37.459Z"
+    }
+  }
+}

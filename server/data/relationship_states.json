@@ -1,0 +1,93 @@
+{
+  "rocky_user": {
+    "userId": "rocky_user",
+    "stage": "COMFORTABLE",
+    "familiarityScore": 34,
+    "totalTurns": 8,
+    "emotionalTurnsCount": 1,
+    "intimacyLevel": "Close",
+    "firstMetDate": "2026-09-15T17:33:23.885Z",
+    "lastInteractionDate": "2026-09-15T17:42:19.667Z",
+    "milestones": [
+      "First Conversation"
+    ]
+  },
+  "default": {
+    "userId": "default",
+    "stage": "ESTABLISHED_COMPANION",
+    "familiarityScore": 293,
+    "totalTurns": 265,
+    "emotionalTurnsCount": 3,
+    "intimacyLevel": "Deep Soulmate",
+    "firstMetDate": "2026-09-15T17:38:45.700Z",
+    "lastInteractionDate": "2026-09-18T10:48:27.248Z",
+    "milestones": [
+      "First Conversation"
+    ]
+  },
+  "user_test_50": {
+    "userId": "user_test_50",
+    "stage": "CLOSE",
+    "familiarityScore": 84,
+    "totalTurns": 52,
+    "emotionalTurnsCount": 7,
+    "intimacyLevel": "Close Companion",
+    "firstMetDate": "2026-09-16T18:01:52.176Z",
+    "lastInteractionDate": "2026-09-16T18:03:31.877Z",
+    "milestones": [
+      "First Conversation"
+    ]
+  },
+  "tester": {
+    "userId": "tester",
+    "stage": "COMFORTABLE",
+    "familiarityScore": 28,
+    "totalTurns": 3,
+    "emotionalTurnsCount": 0,
+    "intimacyLevel": "Close",
+    "firstMetDate": "2026-09-16T21:05:27.765Z",
+    "lastInteractionDate": "2026-09-16T21:05:32.283Z",
+    "milestones": [
+      "First Conversation"
+    ]
+  },
+  "gate_user": {
+    "userId": "gate_user",
+    "stage": "COMFORTABLE",
+    "familiarityScore": 52,
+    "totalTurns": 26,
+    "emotionalTurnsCount": 1,
+    "intimacyLevel": "Close",
+    "firstMetDate": "2026-09-17T11:28:37.417Z",
+    "lastInteractionDate": "2026-09-17T11:29:59.051Z",
+    "milestones": [
+      "First Conversation"
+    ]
+  },
+  "test-user": {
+    "userId": "test-user",
+    "stage": "CLOSE",
+    "familiarityScore": 77,
+    "totalTurns": 52,
+    "emotionalTurnsCount": 0,
+    "intimacyLevel": "Close Companion",
+    "firstMetDate": "2026-09-18T09:16:52.252Z",
+    "lastInteractionDate": "2026-09-18T09:17:03.108Z",
+    "milestones": [
+      "First Conversation"
+    ]
+  },
+  "test_user": {
+    "userId": "test_user",
+    "stage": "CLOSE",
+    "familiarityScore": 85,
+    "totalTurns": 60,
+    "emotionalTurnsCount": 0,
+    "intimacyLevel": "Close Companion",
+    "firstMetDate": "2026-09-18T10:49:31.041Z",
+    "lastInteractionDate": "2026-09-18T11:02:37.458Z",
+    "milestones": [
+      "First Conversation"
+    ]
+  }
+}
